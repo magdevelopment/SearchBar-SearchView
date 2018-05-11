@@ -1,6 +1,24 @@
 apply plugin: 'com.android.library'
-apply plugin: "com.jfrog.bintray"
-apply plugin: 'com.github.dcendents.android-maven'
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com" }
+    }
+}
 
 android {
     compileSdkVersion 26
@@ -12,11 +30,6 @@ android {
                 'src/main/res-public'
         ]
     }
-
-    /*sourceSets {
-    main.res.srcDirs 'res', 'res-public'
-    // main.res.srcDirs += 'src/main/res-public'
-    }*/
 
     defaultConfig {
         minSdkVersion 14
@@ -34,11 +47,6 @@ android {
         }
     }
 
-    /*compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }*/
-
     lintOptions {
         abortOnError false
     }
@@ -52,40 +60,3 @@ dependencies {
 
     implementation 'com.google.android:flexbox:0.3.1'
 }
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'searchview'
-
-    publishedGroupId = 'com.lapism'
-    libraryName = 'SearchView'
-    artifact = 'searchview'
-
-    libraryDescription = 'Persistent SearchView Library in Material Design.'
-
-    siteUrl = 'https://github.com/lapism/SearchView'
-    gitUrl = 'https://github.com/lapism/SearchView.git'
-
-    libraryVersion = '5.0.0-alpha7'
-
-    developerId = 'lapism'
-    developerName = 'Martin Lapiš'
-    developerEmail = 'lapis.martin@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
-apply from: './install.gradle'
-apply from: './bintray.gradle'
-
-/*./gradlew install./gradlew bintrayUpload
-gradlew install
-gradlew bintrayUpload
-}*/
-
-// minifyEnabled true
-// shrinkResources true
-
-// https://services.gradle.org/distributions/
