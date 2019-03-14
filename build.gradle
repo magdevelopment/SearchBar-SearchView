@@ -2,8 +2,29 @@ apply plugin: 'com.android.library'
 apply plugin: "com.jfrog.bintray"
 apply plugin: 'com.github.dcendents.android-maven'
 
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+
+        maven {
+            url 'https://maven.google.com'
+        }
+        jcenter()
+        google()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
+        classpath "com.github.dcendents:android-maven-gradle-plugin:2.1"
+    }
+}
+
+
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     sourceSets {
         main.res.srcDirs = [
@@ -14,10 +35,10 @@ android {
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 27
-        versionName "27.1.1.0.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 28
+        versionCode 28
+        versionName "28.1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -45,10 +66,11 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.annotation:annotation:1.0.2'
 }
 
 ext {
@@ -71,6 +93,10 @@ ext {
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     allLicenses = ["Apache-2.0"]
+}
+
+repositories {
+    google()
 }
 
 apply from: './install.gradle'

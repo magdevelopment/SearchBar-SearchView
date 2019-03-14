@@ -3,10 +3,11 @@ package com.lapism.searchview.widget;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
